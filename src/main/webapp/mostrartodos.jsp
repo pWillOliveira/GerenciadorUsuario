@@ -9,7 +9,9 @@
 </head>
 <body>
 
-
+	Olá ${usuarioLogado.nome}
+	<a href="logout"><button>Sair do Sistema</button></a><br>
+	
 	<h1>Mostrar Usuários</h1>
 
 	<a href="formcadastro.jsp"><button>Cadastrar Usuário</button></a>

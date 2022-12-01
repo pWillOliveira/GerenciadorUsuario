@@ -9,15 +9,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.model.Usuario;
 import br.com.model.UsuarioDAO;
 
 @WebServlet("/portal")
 public class PortalServlet extends HttpServlet {
-
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		HttpSession sessao = request.getSession();
+		if (sessao.getAttribute("usuarioLogado") == null) {
+			response.sendRedirect("formlogin.jsp");
+			return;
+		}
 
 		String idStr = request.getParameter("txtid");
 		String nome = request.getParameter("txtnome");
@@ -52,6 +59,12 @@ public class PortalServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		HttpSession sessao = request.getSession();
+		if (sessao.getAttribute("usuarioLogado") == null) {
+			response.sendRedirect("formlogin.jsp");
+			return;
+		}
 
 		String acao = request.getParameter("acao");
 		if (acao.equals("mostrar")) {

@@ -7,7 +7,10 @@
 <title>Cadastro de Usuário</title>
 </head>
 <body>
-
+	
+	Olá ${usuarioLogado.nome}
+	<a href="logout"><button>Sair do Sistema</button></a><br>
+	
 	<h1>Cadastro de Usuário</h1>
 
 	<form action="portal" method="post">
